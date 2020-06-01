@@ -1,0 +1,22 @@
+Zadanie 1: Pięciu Głodomorów 
+W celu rozwiązania problemu zakleszczania oraz równej dystrybucji jedzenia zaimplementowałem "kelnera", który przydziela sztućce. Kazdy z filozofów próbując podnieść widelce najpierw zmienia swoją flagę na HUNGRY, następnie prosi kelnera o przydział widelców. Kelner przydzieli widelec gdy dla obu sąsiadów spełniony jest jeden z następujących warunków:
+1. Sąsiad jest w stanie THINKING
+2. Sąsiad jest w stanie HUNGRY, lecz do tej pory zjadł więcej niż filozof który prosi o pozwolenie
+3. Sąsiad jest w stanie HUNGRY i do tej pory zjadł mniej niż filozof który prosi o pozwolenie,jednak sąsiad sąsiada jest w stanie EATING
+Powyższy fragment musi wykonywać się w trybie wzajemnego wykluczania.
+
+Jeśli filozofowi nie zostaną przydzielone sztuće(jego flaga nie zmieni się na EATING). Będzie on wtedy czekał na wiadomość wysłaną przez jednego z filozofów odkładających sztućce. Filozof oddając sztuće wysyła wiadomości do swoich sąsiadów.Mogą oni wtedy ponownie poprosić kelnera o przydział. Wykorzystanie kolejki komunikatów umożliwia uniknięcia aktywnego czekania.
+
+
+
+Zadanie 2:Port
+
+W celu implementacji stworzyłem 2 struktury:
+- Ship, w skład której wchodzą następujące parametry: masa,indeks oraz flaga stanu
+-Dock,w skład której wchodzą następujące parametry: liczba miejsc,liczba holowników,liczba statków oraz tablica wskaźników do statków
+
+Po inicjalizacji obiektów następuję uruchomienie procesów sterujących statkami oraz procesu służącego do wyświetlania stanu portu oraz statków.
+Proces sterujacy statkami cyklicznie próbuje wejść do portu oraz opuścić go po pewnym losowym odcinku czasu.By wejść proces zamyka muteks,następnie sprawdza,
+czy wolne zasoby portu są wystarczające,by mógł on do niego dopłynąć.Jeżeli nie to proces czeka na signalizacje od innego procesu zwalniającego zasoby.
+Dodatkowo jeśli proces zostanie obudzony to samemu też signalizuje,ponieważ jeśli któryś z procesów zwrócił zasoby,to wszystkie procesy uśpione muszą sprawdzić,
+czy mogą teraz wejść. Jeśli zasoby są wystarczające to proces zajmuje wymaganą liczbę holowników oraz miejsce. Holowniki zostaną zwrócone gdy proces skończy cumować,zaś miejsce zostanie zwrócone,gdy statek opuści port. Gdy statek chce opuścić port musi sprawdzić,czy port posiada wystarczającą liczbę wolnych holowników.Jeśli nie to czeka na sygnał od procesu zwracającego zasoby oraz samemu sygnalizuje po ewentualnym obudzeniu.
