@@ -1,7 +1,7 @@
 1.To compile type 'make -B' and  press Enter
 
-2.To run first program type './a' and press Enter
-To run second program type './b' and press Enter
+2.To run the first program type './a' and press Enter
+To run the second program type './b' and press Enter
 
 3.The content of files:
 
@@ -17,4 +17,3 @@ Short Describtion of the Project:
 
 Thera are n ships present in the program, each presented by the thread. They have diffrent size and weigh, so they requre diffrent amount of resources to enter or leave the port. The port has a limited number of free docks and they cannot be shared. My program solves it by introducing another thread that synchronizes the allocation of the the recources and prevents the deadlock.
 
-Bush did 911
