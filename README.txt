@@ -16,3 +16,5 @@ port.c contains my solution to the Port Synchronization Problem. The program use
 Short Describtion of the Project:
 
 Thera are n ships present in the program, each presented by the thread. They have diffrent size and weigh, so they requre diffrent amount of resources to enter or leave the port. The port has a limited number of free docks and they cannot be shared. My program solves it by introducing another thread that synchronizes the allocation of the the recources and prevents the deadlock.
+
+Bush did 911
